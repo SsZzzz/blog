@@ -1,0 +1,74 @@
+$main1:#055EBB;
+$main2:#0577EE;
+$main3:#2A91FC;
+$main4:#5BABFD;
+$main5:#8DC5FE;
+$success1:#67C23A;
+$success2:#E1F3D8;
+$success3:#F0F9EB;
+$warning1:#E6A23C;
+$warning2:#FAECD8;
+$warning3:#FDF6EC;
+$danger1:#F56C6C;
+$danger2:#FDE2E2;
+$danger3:#FEF0F0;
+$info1:#909399;
+$info2:#E9E9EB;
+$info3:#F4F4F5;
+$fontColor1:#303133;
+$fontColor2:#606266;
+$fontColor3:#909399;
+$fontColor4:#C0C4CC;
+$borderColor1:#DCDFE6;
+$borderColor2:#E4E7ED;
+$borderColor3:#EBEEF5;
+$borderColor4:#F2F6FC;
+$backgroundColor1:#f1f1f1;
+$backgroundColor2:#f9f9f9;
+$backgroundColor3:#fefefe;
+*{
+	box-sizing: border-box;
+}
+body{
+	overflow: hidden;
+	font-size: 16px;
+	font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+	color: $fontColor1;
+}
+input{
+  display: block;
+  padding-left: 10px;
+  border: 1px solid $borderColor1;
+}
+button{
+  display: block;
+  background-color: $main2;
+  border: 0;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  transition: all 0.5s;
+  &:hover {
+    background-color: $main1;
+  }
+}
+.mask {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 11;
+}
+.veeError{
+  color: $danger1;
+  font-size: 13px;
+  float: left;
+}
+.right{
+	float: right;
+}
+.left{
+	float: left;
+}
