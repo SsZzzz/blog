@@ -18,9 +18,9 @@
       <div class="icon" :class="{visited:'aboutMe'=== $route.name}" @click="turnURL('aboutMe')">
         <i class="fa fa-user" aria-hidden="true"></i>
       </div>
-      <div class="icon" :class="{visited:'test'=== $route.name}" @click="turnURL('test')">
+      <!-- <div class="icon" :class="{visited:'test'=== $route.name}" @click="turnURL('test')">
         <i class="fa fa-globe" aria-hidden="true"></i>
-      </div>
+      </div> -->
       <transition
         enter-active-class="animated fadeInRight"
         leave-active-class="animated fadeOutRight"
