@@ -26,7 +26,7 @@
         <span>请先登录</span>
       </div>
     </div>
-    <div class="commentary" v-for="(item,index) in commentList" :key="index">
+    <div class="commentary" v-for="item in commentList" :key="item.id">
       <avatar :username="item.username" :src="item.avator" :size="40" class="avatar"></avatar>
       <div class="commentaryMain">
         <div class="info">
@@ -34,13 +34,32 @@
           <span class="releaseTime">{{item.releaseTime}}</span>
         </div>
         <div class="content">{{item.comment}}</div>
-        <div class="replyButton">
+        <div class="replyButton" v-show="store.logined">
           <span @click="showReplyComment(item.id)">reply</span>
         </div>
         <div class="replyComment" v-show="item.id===replyCommentId">
           <textarea v-model="replyComment"></textarea>
           <button @click="replyCommentEvent" class="reply">回复</button>
           <button @click="closeReplyComment" class="close">关闭</button>
+        </div>
+        <div
+          class="commentary subCommentary"
+          v-for="subItem  in item.subCommentList"
+          :key="subItem.subId"
+        >
+          <avatar
+            :username="subItem.subUsername"
+            :src="subItem.subAvator"
+            :size="30"
+            class="avatar"
+          ></avatar>
+          <div class="commentaryMain">
+            <div class="info">
+              <span class="username">{{subItem.subUsername}}</span>
+              <span class="releaseTime">{{subItem.subReleaseTime}}</span>
+            </div>
+            <div class="content">{{subItem.subComment}}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -121,6 +140,7 @@ export default {
         .then(res => {
           const { code, message } = res.data;
           if (code === 1) {
+            this.getCommentList();
             this.$message({ content: message, type: "success" });
             this.replyCommentId = 0;
           }
@@ -212,6 +232,7 @@ export default {
     margin-bottom: 30px;
   }
 }
+
 .commentary {
   margin: 20px 0;
   .commentaryMain {
@@ -258,6 +279,9 @@ export default {
       }
     }
   }
+}
+.subCommentary {
+  margin: 10px 0;
 }
 textarea {
   width: 100%;
