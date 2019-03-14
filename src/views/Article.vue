@@ -34,8 +34,13 @@
           <span class="releaseTime">{{item.releaseTime}}</span>
         </div>
         <div class="content">{{item.comment}}</div>
-        <div class="reply">
-          <span>reply</span>
+        <div class="replyButton">
+          <span @click="showReplyComment(item.id)">reply</span>
+        </div>
+        <div class="replyComment" v-show="item.id===replyCommentId">
+          <textarea v-model="replyComment"></textarea>
+          <button @click="replyCommentEvent" class="reply">回复</button>
+          <button @click="closeReplyComment" class="close">关闭</button>
         </div>
       </div>
     </div>
@@ -51,6 +56,8 @@ export default {
       store,
       article: {},
       comment: "",
+      replyComment: "",
+      replyCommentId: 0,
       commentList: []
     };
   },
@@ -90,6 +97,32 @@ export default {
             this.comment = "";
             this.$message({ content: message, type: "success" });
             this.getCommentList();
+          }
+        });
+    },
+    showReplyComment(id) {
+      this.replyComment = "";
+      this.replyCommentId = id;
+    },
+    closeReplyComment() {
+      this.replyComment = "";
+      this.replyCommentId = 0;
+    },
+    replyCommentEvent() {
+      if (!this.replyComment) {
+        this.$message({ content: "请填写内容", type: "error" });
+        return;
+      }
+      this.$api
+        .replyComment({
+          commentid: this.replyCommentId,
+          comment: this.replyComment
+        })
+        .then(res => {
+          const { code, message } = res.data;
+          if (code === 1) {
+            this.$message({ content: message, type: "success" });
+            this.replyCommentId = 0;
           }
         });
     },
@@ -155,11 +188,6 @@ export default {
 
   .commentMain {
     flex-grow: 1;
-    textarea {
-      width: 100%;
-      height: 100px;
-      border: 1px solid $borderColor1;
-    }
     button {
       width: 60px;
       height: 35px;
@@ -180,6 +208,9 @@ export default {
   align-items: center;
   font-size: 20px;
   color: $fontColor3;
+  & > span {
+    margin-bottom: 30px;
+  }
 }
 .commentary {
   margin: 20px 0;
@@ -199,7 +230,7 @@ export default {
     .content {
       margin: 10px 0;
     }
-    .reply > span {
+    .replyButton > span {
       color: $fontColor3;
       transition: all 0.5s;
       cursor: pointer;
@@ -207,6 +238,30 @@ export default {
         color: $fontColor2;
       }
     }
+    .replyComment {
+      margin-top: 10px;
+      textarea {
+        height: 60px;
+      }
+      button {
+        width: 50px;
+        height: 30px;
+        float: right;
+        margin-top: 10px;
+      }
+      .close {
+        margin-right: 10px;
+        background-color: $danger1;
+        &:hover {
+          background-color: darken($danger1, 8%);
+        }
+      }
+    }
   }
+}
+textarea {
+  width: 100%;
+  height: 100px;
+  border: 1px solid $borderColor1;
 }
 </style>

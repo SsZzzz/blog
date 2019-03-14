@@ -15,6 +15,7 @@ const saveImage = (params) => {
 const editUserInfo = (params) => { return axios.post('/blog/editUserInfo', params) };
 const comment = (params) => { return axios.post('/blog/comment', params) };
 const getCommentList = (params) => { return axios.get('/blog/getCommentList', { params }) };
+const replyComment = (params) => { return axios.post('/blog/replyComment', params) };
 
 export default {
   getArticleList,
@@ -27,5 +28,6 @@ export default {
   saveImage,
   editUserInfo,
   comment,
-  getCommentList
+  getCommentList,
+  replyComment
 };
