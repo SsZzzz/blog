@@ -46,7 +46,7 @@
           <ul>
             <li>常用工具:vscode,git,navicat,eclipse</li>
             <li>使用过echarts等工具</li>
-            <li>有良好的代码习惯,es6编程遵循Airbnb编码规范</li>
+            <li>有良好的代码习惯</li>
           </ul>
         </li>
       </ul>
