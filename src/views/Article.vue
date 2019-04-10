@@ -5,7 +5,9 @@
       <a href="javascript:void(0)" @click="goBack">返回</a>
     </div>
     <div class="date">{{article.date}}</div>
-    <img class="titleImage" v-if="article.titleImage" :src="article.titleImage">
+    <div class="titleImage">
+      <img v-if="article.titleImage" :src="article.titleImage">
+    </div>
     <div class="content" v-html="compiledMarkdown(article.content)"></div>
     <div class="label">
       <i class="fa fa-tag" aria-hidden="true"></i>
@@ -184,8 +186,10 @@ export default {
   margin-bottom: 16px;
 }
 .titleImage {
-  float: right;
-  height: 300px;
+  text-align: center;
+  img {
+    max-height: 300px;
+  }
 }
 .label {
   color: $main2;
