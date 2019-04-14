@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import hljs from 'highlight.js'
 import VeeValidate, { Validator } from 'vee-validate'
 import zh_CN from 'vee-validate/dist/locale/zh_CN'
 import api from './api/api'
+import 'highlight.js/styles/atom-one-dark.css' //样式文件
 import 'font-awesome/css/font-awesome.css'
 import '@/assets/css/normalize.css'
 import '@/assets/css/base.scss'
@@ -15,11 +17,6 @@ Validator.localize('zh_CN', zh_CN)
 const config = {
   locale: 'zh_CN'
 }
-Vue.config.productionTip = false
-Vue.prototype.$api = api
-Vue.use(VeeValidate, config)
-Vue.use(message)
-
 const dictionary = {
   zh_CN: {
     messages: {
@@ -34,6 +31,18 @@ const dictionary = {
   }
 };
 Validator.localize(dictionary);
+
+Vue.directive('highlight', function (el) {
+  let blocks = el.querySelectorAll('pre code');
+  blocks.forEach((block) => {
+    hljs.highlightBlock(block)
+  })
+})
+
+Vue.config.productionTip = false
+Vue.prototype.$api = api
+Vue.use(VeeValidate, config)
+Vue.use(message)
 
 new Vue({
   router,

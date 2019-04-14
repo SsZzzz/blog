@@ -8,7 +8,7 @@
     <div class="titleImage">
       <img v-if="article.titleImage" :src="article.titleImage">
     </div>
-    <div class="content" v-html="compiledMarkdown(article.content)"></div>
+    <div class="content" v-html="compiledMarkdown(article.content)" v-highlight></div>
     <div class="label">
       <i class="fa fa-tag" aria-hidden="true"></i>
       <span>{{article.label}}</span>
