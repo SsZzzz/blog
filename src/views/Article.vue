@@ -207,13 +207,13 @@ export default {
 .comment {
   position: relative;
   padding-top: 20px;
-  margin-top: 10px;
+  margin: 10px 0 20px 0;
   border-top: 1px solid $borderColor1;
 
   .commentMain {
     flex-grow: 1;
     button {
-      width: 60px;
+      width: 80px;
       height: 35px;
       float: right;
       margin-top: 10px;
@@ -265,11 +265,12 @@ export default {
     }
     .replyComment {
       margin-top: 10px;
+      height: 110px;
       textarea {
         height: 60px;
       }
       button {
-        width: 50px;
+        width: 70px;
         height: 30px;
         float: right;
         margin-top: 10px;

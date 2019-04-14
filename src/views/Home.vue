@@ -20,7 +20,7 @@
       </div>
       <!-- <div class="icon" :class="{visited:'test'=== $route.name}" @click="turnURL('test')">
         <i class="fa fa-globe" aria-hidden="true"></i>
-      </div> -->
+      </div>-->
       <transition
         enter-active-class="animated fadeInRight"
         leave-active-class="animated fadeOutRight"
@@ -31,6 +31,7 @@
       </transition>
       <div class="dropdown">
         <avatar :username="store.userInfo.username" :src="store.userInfo.avator" :size="32"></avatar>
+        <div style="height:10px;"></div>
         <div class="dropdown-content" v-if="!store.logined">
           <a href="javascript:void(0)" @click="open('isLogin')">登录</a>
           <a href="javascript:void(0)" @click="open('isRegister')">注册</a>
@@ -44,12 +45,6 @@
       <keep-alive include="mPage,tags,aboutMe,timeLine">
         <router-view :is-search="isSearch" @close-search="isSearch=!isSearch"/>
       </keep-alive>
-      <footer>
-        <span>Copyright © 2019 by Mendia So, all rights reserved.</span>
-        <span
-          class="warn"
-        >warning:Since this blog doesn't consider compatibility at all, please try to use the new browser.</span>
-      </footer>
     </main>
     <transition enter-active-class="animated zoomIn" leave-active-class="animated zoomOut">
       <div class="dialog" id="login" v-show="isLogin">
@@ -274,23 +269,9 @@ main {
   bottom: 0;
   width: 100%;
   overflow-y: auto;
-  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   & > div {
-    min-height: calc(100vh - 120px);
     padding: 0 40px;
-    overflow: hidden;
-  }
-}
-footer {
-  color: $fontColor4;
-  height: 70px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  .warn {
-    font-size: 13px;
-    margin-top: 5px;
   }
 }
 .icon {
@@ -347,6 +328,16 @@ footer {
   button {
     margin-top: 25px;
     padding: 8px 20px;
+  }
+}
+@media (max-width: 600px) {
+  header {
+    padding: 0 20px;
+  }
+  main {
+    & > div {
+      padding: 0 20px;
+    }
   }
 }
 </style>

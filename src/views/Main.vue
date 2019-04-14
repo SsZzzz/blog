@@ -1,6 +1,6 @@
 <template>
   <div>
-    <transition enter-active-class="animated slideInDown" leave-active-class="animated slideOutUp">
+    <transition enter-active-class="animated fadeInDown" leave-active-class="animated fadeOutUp">
       <div v-show="isSearch" class="search">
         <input type="text" v-model="searchText" @keyup.enter="search" placeholder="按回车键搜索">
       </div>
@@ -102,15 +102,14 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/css/base.scss";
 .search {
-  width: 400px;
-  height: 70px;
+  width: 300px;
+  height: 50px;
   position: fixed;
   left: 0;
   right: 0;
   margin: auto;
   z-index: 2;
   input {
-    outline-color: $main1;
     padding-left: 10px;
     border: 1px solid $main1;
     width: 100%;
@@ -124,7 +123,7 @@ export default {
 }
 .item {
   border: 1px solid $borderColor1;
-  margin-top: 20px;
+  margin: 20px 0;
   padding: 20px;
   background-color: white;
   cursor: pointer;

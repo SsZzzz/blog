@@ -22,16 +22,17 @@
       </ul>
       <span>关于我</span>
       <ul>
-        <li>姓名:苏泽</li>
-        <li>学历:本科</li>
-        <li>学校:浙江科技学院</li>
-        <li>邮箱:suze0526@gmail.com|1144270183@qq.com</li>
-        <li>坐标:杭州</li>
+        <li>姓名: 苏泽</li>
+        <li>学历: 本科</li>
+        <li>学校: 浙江科技学院</li>
+        <li>邮箱: suze0526@gmail.com或1144270183@qq.com</li>
+        <li>坐标: 杭州</li>
         <li>
-          github地址:
+          github地址: 
           <a href="https://github.com/SsZzzz" target="blank">https://github.com/SsZzzz</a>
         </li>
-        <li>技能
+        <li>
+          技能
           <ul>
             <li>html,html5</li>
             <li>css,css3</li>
@@ -42,9 +43,10 @@
             <li>oracle,mysql</li>
           </ul>
         </li>
-        <li>其他
+        <li>
+          其他
           <ul>
-            <li>常用工具:vscode,git,navicat,eclipse</li>
+            <li>常用工具: vscode,git,navicat,eclipse</li>
             <li>使用过echarts等工具</li>
             <li>有良好的代码习惯</li>
           </ul>
@@ -81,6 +83,11 @@ export default {
     font-size: 18px;
     color: $fontColor2;
     margin: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .content{
+    width: 100%;
   }
 }
 </style>
