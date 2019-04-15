@@ -227,7 +227,8 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/css/base.scss";
 header {
-  position: absolute;
+  position: fixed;
+  top: 0;
   width: 100%;
   height: 50px;
   background-color: $main1;
@@ -264,12 +265,9 @@ header {
 }
 main {
   background-color: $backgroundColor3;
-  position: absolute;
-  top: 50px;
-  bottom: 0;
+  margin-top: 50px;
+  overflow: hidden;
   width: 100%;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
   & > div {
     padding: 0 40px;
   }
