@@ -73,7 +73,7 @@ export default {
       this.$router.push({ name: "article", query: { id } });
     },
     search() {
-      document.querySelector("main").scrollTop = 0;
+      document.querySelector("html").scrollTop = 0;
       this.getArticleList();
     },
     closeSearch() {
@@ -82,18 +82,18 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     next(vm => {
-      document.querySelector("main").scrollTop = to.meta.scrollTop;
+      document.querySelector("html").scrollTop = to.meta.scrollTop;
     });
   },
   beforeRouteUpdate(to, from, next) {
     to.meta.labelid = to.query.labelid;
     next();
-    document.querySelector("main").scrollTop = 0;
+    document.querySelector("html").scrollTop = 0;
     this.getArticleList();
   },
   beforeRouteLeave(to, from, next) {
     from.meta.labelid = this.$route.query.labelid;
-    from.meta.scrollTop = document.querySelector("main").scrollTop;
+    from.meta.scrollTop = document.querySelector("html").scrollTop;
     next();
   }
 };
