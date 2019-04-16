@@ -24,7 +24,6 @@
       <ul>
         <li>姓名: 苏泽</li>
         <li>学历: 本科</li>
-        <li>学校: 浙江科技学院</li>
         <li>邮箱: suze0526@gmail.com或1144270183@qq.com</li>
         <li>坐标: 杭州</li>
         <li>
