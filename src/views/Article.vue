@@ -2,7 +2,9 @@
   <div>
     <div class="title">
       <span>{{article.title}}</span>
-      <a href="javascript:void(0)" @click="goBack">返回</a>
+      <div>
+        <a href="javascript:void(0)" @click="goBack">返回</a>
+      </div>
     </div>
     <div class="date">{{article.date}}</div>
     <div class="titleImage">
@@ -171,12 +173,15 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  a {
-    font-size: 18px;
-    text-decoration: none;
-    color: $main2;
-    &:active {
-      color: $main1;
+  div {
+    flex-basis: 50px;
+    a {
+      font-size: 18px;
+      text-decoration: none;
+      color: $main2;
+      &:active {
+        color: $main1;
+      }
     }
   }
 }
