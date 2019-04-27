@@ -106,6 +106,7 @@ export default {
   width: 300px;
   height: 50px;
   position: fixed;
+  top: 80px;
   left: 0;
   right: 0;
   margin: auto;

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="home">
     <header>
       <div
         class="icon"
@@ -148,6 +148,17 @@ export default {
       }
     };
   },
+  watch: {
+    isSearch() {
+      this.changeScrolling("isSearch");
+    },
+    isLogin() {
+      this.changeScrolling("isLogin");
+    },
+    isRegister() {
+      this.changeScrolling("isRegister");
+    }
+  },
   methods: {
     turnURL(name) {
       this.$router.push({ name });
@@ -216,6 +227,18 @@ export default {
           this.svgCaptcha = data;
         }
       });
+    },
+    changeScrolling(p) {
+      if (this[p]) {
+        this.$route.meta.scrollTop = document.scrollingElement.scrollTop; //记录滚动条的位置
+        document.querySelector("#home").style.position = "fixed"; //将滚动条移除
+        document.querySelector("#home").style.width = "100%"; //当设置position:fixed之后,宽度若是没有设置为100%,会变窄
+        document.querySelector("#home").style.top =
+          -this.$route.meta.scrollTop + "px"; //设置为fixed后,界面会移到顶部,所以要将界面移到原来的位置.
+      } else {
+        document.querySelector("#home").style.position = "static"; //恢复滚动条
+        document.scrollingElement.scrollTop = this.$route.meta.scrollTop; //将滚动条恢复到原来的位置
+      }
     }
   },
   components: {
