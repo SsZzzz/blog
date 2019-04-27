@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="article">
     <div class="title">
       <span>{{article.title}}</span>
       <div>
@@ -297,5 +297,15 @@ textarea {
   width: 100%;
   height: 100px;
   border: 1px solid $borderColor1;
+}
+</style>
+<style lang="scss">
+// 写在scoped中样式不生效,目前还不知道原因.
+@media (max-width: 600px) {
+  #article {
+    img {
+      width: 100%;
+    }
+  }
 }
 </style>
